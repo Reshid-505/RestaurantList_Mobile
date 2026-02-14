@@ -10,4 +10,6 @@ import Foundation
 enum RestaurantType: String {
     case fastFood = "Fast Food"
     case cafe = "Cafe"
+    case pub = "Pub"
+    case teaHouse = "Tea House"
 }

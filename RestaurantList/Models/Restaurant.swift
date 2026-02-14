@@ -20,7 +20,7 @@ var restaurant2 = Restaurant(name: "Burger King", imageName: "burgerking", type:
 var restaurant3 = Restaurant(name: "Wendy's", imageName: "wendy's", type: .fastFood, location: "USA")
 var restaurant4 = Restaurant(name: "KFC", imageName: "kfc", type: .fastFood, location: "USA")
 var restaurant5 = Restaurant(name: "Five Guys", imageName: "fiveguys", type: .fastFood, location: "USA")
-var restaurants:[Restaurant] = [
+var restaurants: [Restaurant] = [
     restaurant1,
     restaurant2,
     restaurant3,

@@ -8,15 +8,33 @@
 import SwiftUI
 
 struct RestaurantView: View {
-    var restaurantName: String
+    var restaurant: Restaurant
     var body: some View {
-        HStack{
-            Image("restaurant")
+        VStack(alignment: .leading, spacing: 16){
+            Image(restaurant.imageName)
                 .resizable()
-                .scaledToFit()
-                .frame(width: 80)
-            Text(restaurantName)
+//                .scaledToFill()
+                .frame(height: 200)
+                .cornerRadius(20)
+            VStack(alignment: .leading){
+                Text(restaurant.name)
+                    .font(.title2)
+                Text(restaurant.category)
+                    .font(.callout)
+                Text(restaurant.city)
+                    .foregroundStyle(.gray)
+                    .font(.footnote)
+            }
+            .padding(.leading)
         }
+        
+//        HStack{
+//            Image(restaurant.imageName)
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: 80)
+//            Text(restaurant.name)
+//        }
     }
 }
 

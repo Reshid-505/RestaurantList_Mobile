@@ -1,0 +1,13 @@
+//
+//  Type.swift
+//  RestaurantList
+//
+//  Created by Reshid Huseynov on 14.02.2026.
+//
+
+import Foundation
+
+enum Type: String {
+    case fastFood = "Fast Food"
+    case cafe = "Cafe"
+}

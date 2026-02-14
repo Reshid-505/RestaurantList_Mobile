@@ -19,7 +19,7 @@ struct RestaurantView: View {
             VStack(alignment: .leading){
                 Text(restaurant.name)
                     .font(.title2)
-                Text(restaurant.category)
+                Text(restaurant.type.rawValue)
                     .font(.callout)
                 Text(restaurant.city)
                     .foregroundStyle(.gray)

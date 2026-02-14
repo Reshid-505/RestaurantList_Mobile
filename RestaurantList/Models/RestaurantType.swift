@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Type: String {
+enum RestaurantType: String {
     case fastFood = "Fast Food"
     case cafe = "Cafe"
 }

@@ -11,7 +11,7 @@ struct Restaurant: Identifiable, Hashable{
     var id: UUID = UUID()
     var name: String
     var imageName: String
-    var type: Type
+    var type: RestaurantType
     var city: String
 }
 

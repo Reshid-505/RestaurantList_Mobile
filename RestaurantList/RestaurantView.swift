@@ -21,7 +21,7 @@ struct RestaurantView: View {
                     .font(.title2)
                 Text(restaurant.type.rawValue)
                     .font(.callout)
-                Text(restaurant.city)
+                Text(restaurant.location)
                     .foregroundStyle(.gray)
                     .font(.footnote)
             }

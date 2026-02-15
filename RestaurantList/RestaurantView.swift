@@ -10,6 +10,7 @@ import SwiftUI
 struct RestaurantView: View {
     @State private var showDialog: Bool = false
     @State private var isFavorite: Bool = false
+    @State private var showAlert: Bool = false
     
     var restaurant: Restaurant
     var body: some View {
@@ -59,7 +60,7 @@ struct RestaurantView: View {
             }
             
             Button{
-                
+                showAlert = true
             }label:{
                 Text("Copy link")
             }
@@ -69,6 +70,11 @@ struct RestaurantView: View {
             }label:{
                 Text("Open in map")
             }
+        }
+        .alert("Link copied", isPresented: $showAlert) {
+            
+        } message: {
+            Text("Link copied to clipboard")
         }
         
 //        HStack{

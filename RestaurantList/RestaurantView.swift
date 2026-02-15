@@ -29,9 +29,11 @@ struct RestaurantView: View {
                         .scaledToFit()
                         .frame(width: 25)
                         .foregroundStyle(isFavorite ? .red : .black)
+                        .fontWeight(.light)
                         .onTapGesture {
                             isFavorite.toggle()
                         }
+                        .padding([.top, .trailing], 10)
                     
                 }
             }

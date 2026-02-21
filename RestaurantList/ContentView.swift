@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var restaurants: [Restaurant] = [
+        restaurant1,
+        restaurant2,
+        restaurant3,
+        restaurant4,
+        restaurant5,
+        ]
     
     var body: some View {
-        List(restaurants, id: \.self){ restaurant in
-            RestaurantView(restaurant: restaurant)
+        List(restaurants.indices, id: \.self){ index in
+            RestaurantView(restaurant: $restaurants[index])
                 .listRowSeparator(.hidden)
         }
         .listStyle(.plain)

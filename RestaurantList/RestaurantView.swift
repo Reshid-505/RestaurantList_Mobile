@@ -9,10 +9,10 @@ import SwiftUI
 
 struct RestaurantView: View {
     @State private var showDialog: Bool = false
-    @State private var isFavorite: Bool = false
     @State private var showAlert: Bool = false
     
-    var restaurant: Restaurant
+    @Binding var restaurant: Restaurant
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16){
             ZStack(alignment: .top){
@@ -25,14 +25,14 @@ struct RestaurantView: View {
                 HStack{
                     Spacer()
                     
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                    Image(systemName: restaurant.isFavorite ? "heart.fill" : "heart")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 25)
-                        .foregroundStyle(isFavorite ? .red : .black)
+                        .foregroundStyle(restaurant.isFavorite ? .red : .black)
                         .fontWeight(.light)
                         .onTapGesture {
-                            isFavorite.toggle()
+                            restaurant.isFavorite.toggle()
                         }
                         .padding([.top, .trailing], 10)
                     
@@ -54,9 +54,9 @@ struct RestaurantView: View {
         }
         .confirmationDialog("What do you want?", isPresented: $showDialog, titleVisibility: .visible) {
             Button{
-                isFavorite.toggle()
+                restaurant.isFavorite.toggle()
             }label:{
-                Text(isFavorite ? "Remove from favorites" : "Add to favorites")
+                Text(restaurant.isFavorite ? "Remove from favorites" : "Add to favorites")
             }
             
             Button{

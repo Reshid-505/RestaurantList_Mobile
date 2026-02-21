@@ -17,9 +17,14 @@ struct ContentView: View {
         ]
     
     var body: some View {
-        List(restaurants.indices, id: \.self){ index in
-            RestaurantView(restaurant: $restaurants[index])
-                .listRowSeparator(.hidden)
+        List{
+            ForEach(restaurants.indices, id: \.self){ index in
+                RestaurantView(restaurant: $restaurants[index])
+                    .listRowSeparator(.hidden)
+            }
+            .onDelete { IndexSet in
+                restaurants.remove(atOffsets: IndexSet)
+            }
         }
         .listStyle(.plain)
     }

@@ -17,31 +17,40 @@ struct ContentView: View {
         ]
     
     var body: some View {
-        List{
-            ForEach(restaurants.indices, id: \.self){ index in
-                RestaurantView(restaurant: $restaurants[index])
-                    .listRowSeparator(.hidden)
-                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                        Button{
-                            
-                        }label:{
-                            Image(systemName: "heart")
-                                .tint(.red)
-                        }
+        NavigationStack{
+            List{
+                ForEach(restaurants.indices, id: \.self){ index in
+                    NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])){
+                        RestaurantView(restaurant: $restaurants[index])
                         
-                        Button{
-                            
-                        }label:{
-                            Image(systemName: "square.and.arrow.up")
-                                .tint(.yellow)
-                        }
                     }
+                        
+                        .listRowSeparator(.hidden)
+                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                            Button{
+                                
+                            }label:{
+                                Image(systemName: "heart")
+                                    .tint(.red)
+                            }
+                            
+                            Button{
+                                
+                            }label:{
+                                Image(systemName: "square.and.arrow.up")
+                                    .tint(.yellow)
+                            }
+                        }
+                }
+                .onDelete { IndexSet in
+                    restaurants.remove(atOffsets: IndexSet)
+                }
             }
-            .onDelete { IndexSet in
-                restaurants.remove(atOffsets: IndexSet)
-            }
+            .listStyle(.plain)
+            .navigationTitle("Restaurants")
+//            .navigationBarTitleDisplayMode(.automatic)
+            
         }
-        .listStyle(.plain)
     }
 }
 

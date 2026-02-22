@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  RestaurantList
+    //  RestaurantList
 //
 //  Created by Reshid Huseynov on 01.02.2026.
 //
@@ -24,7 +24,7 @@ struct ContentView: View {
                         RestaurantView(restaurant: $restaurants[index])
                         
                     }
-                        
+                        .navigationLinkIndicatorVisibility(.hidden)
                         .listRowSeparator(.hidden)
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button{

@@ -21,6 +21,21 @@ struct ContentView: View {
             ForEach(restaurants.indices, id: \.self){ index in
                 RestaurantView(restaurant: $restaurants[index])
                     .listRowSeparator(.hidden)
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Button{
+                            
+                        }label:{
+                            Image(systemName: "heart")
+                                .tint(.red)
+                        }
+                        
+                        Button{
+                            
+                        }label:{
+                            Image(systemName: "square.and.arrow.up")
+                                .tint(.yellow)
+                        }
+                    }
             }
             .onDelete { IndexSet in
                 restaurants.remove(atOffsets: IndexSet)

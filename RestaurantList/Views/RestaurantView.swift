@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantView: View {
-    @State private var showDialog: Bool = false
+//    @State private var showDialog: Bool = false
     @State private var showAlert: Bool = false
     
     @Binding var restaurant: Restaurant
@@ -49,41 +49,53 @@ struct RestaurantView: View {
             }
             .padding([.leading, .bottom])
         }
-        .onTapGesture {
-            showDialog = true
-        }
-        .confirmationDialog("What do you want?", isPresented: $showDialog, titleVisibility: .visible) {
+        .contextMenu{
             Button{
                 restaurant.isFavorite.toggle()
             }label:{
-                Text(restaurant.isFavorite ? "Remove from favorites" : "Add to favorites")
+                Label(restaurant.isFavorite ? "Remove from favorites" : "Add to favorites", systemImage: restaurant.isFavorite ? "heart.slash" : "heart")
             }
             
             Button{
                 showAlert = true
             }label:{
-                Text("Copy link")
+                Label("Copy link", systemImage: "document.on.document")
             }
             
             Button{
                 
             }label:{
-                Text("Open in map")
+                Label("Open in map", systemImage: "map")
             }
         }
+//        .onTapGesture {
+//            showDialog = true
+//        }
+//        .confirmationDialog("What do you want?", isPresented: $showDialog, titleVisibility: .visible) {
+//            Button{
+//                restaurant.isFavorite.toggle()
+//            }label:{
+//                Text(restaurant.isFavorite ? "Remove from favorites" : "Add to favorites")
+//            }
+//            
+//            Button{
+//                showAlert = true
+//            }label:{
+//                Text("Copy link")
+//            }
+//            
+//            Button{
+//                
+//            }label:{
+//                Text("Open in map")
+//            }
+//        }
         .alert("Link copied", isPresented: $showAlert) {
             
         } message: {
             Text("Link copied to clipboard")
         }
-        
-//        HStack{
-//            Image(restaurant.imageName)
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 80)
-//            Text(restaurant.name)
-//        }
+
     }
 }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantDetailView: View {
+    @Environment(\.dismiss) private var dismiss
     var restaurant: Restaurant
     
     var body: some View {
@@ -60,6 +61,19 @@ struct RestaurantDetailView: View {
         }
             .padding()
             .navigationBarTitle(restaurant.name)
+            .navigationBarBackButtonHidden()
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Button{
+                        dismiss()
+                    }label:{
+                        HStack{
+                            Image(systemName: "chevron.left")
+                            Text("Restaurants")
+                        }
+                    }
+                }
+            }
     }
 }
 

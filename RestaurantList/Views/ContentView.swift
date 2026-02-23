@@ -20,7 +20,7 @@ struct ContentView: View {
         NavigationStack{
             List{
                 ForEach(restaurants.indices, id: \.self){ index in
-                    NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])){
+                    NavigationLink(destination: RestaurantDetailView(restaurant: $restaurants[index])){
                         RestaurantView(restaurant: $restaurants[index])
                         
                     }

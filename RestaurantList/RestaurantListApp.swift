@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct RestaurantListApp: App {
+    @StateObject var viewModel: RestaurantListVewModel = RestaurantListVewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(vm:viewModel)
         }
     }
 }

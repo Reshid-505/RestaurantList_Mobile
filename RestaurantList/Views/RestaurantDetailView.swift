@@ -29,17 +29,18 @@ struct RestaurantDetailView: View {
                                 .fontWeight(.heavy)
                                 .shadow(radius: 10)
                             Text(restaurant.type.rawValue)
-                                .foregroundStyle(.white)
                                 .font(.title3)
                                 .fontWeight(.bold)
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 4)
                                 .background(.black)
+                                .cornerRadius(4)
                         }
                             .padding()
                             
                     }
                     .fontDesign(.rounded)
+                    .foregroundStyle(.white)
                 
                 VStack(alignment: .leading,spacing: 16){
                     Text(restaurant.description)
@@ -48,16 +49,16 @@ struct RestaurantDetailView: View {
                     HStack(spacing:32){
                         VStack(alignment: .leading){
                             Text("ADDRESS")
-                                .font(.title2)
-                                .fontWeight(.semibold)
+                                .font(.headline)
+                                .fontDesign(.rounded)
                             
                             Text(restaurant.address)
                         }
                         
                         VStack(alignment: .leading){
                             Text("PHONE")
-                                .font(.title2)
-                                .fontWeight(.semibold)
+                                .font(.headline)
+                                .fontDesign(.rounded)
                             
                             Text(restaurant.phone)
                         }
@@ -67,7 +68,6 @@ struct RestaurantDetailView: View {
                     .padding()
                 
             }
-            .foregroundStyle(.white)
             
             
         }
@@ -75,7 +75,6 @@ struct RestaurantDetailView: View {
         .navigationBarTitle(restaurant.name)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
-        .background(.black)
         .toolbar{
             ToolbarItem(placement: .topBarLeading){
                 Button{

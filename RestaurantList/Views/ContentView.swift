@@ -8,20 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var restaurants: [Restaurant] = [
-        restaurant1,
-        restaurant2,
-        restaurant3,
-        restaurant4,
-        restaurant5,
-        ]
+    @ObservedObject var vm: RestaurantListVewModel
     
     var body: some View {
         NavigationStack{
             List{
-                ForEach(restaurants.indices, id: \.self){ index in
-                    NavigationLink(destination: RestaurantDetailView(restaurant: $restaurants[index])){
-                        RestaurantView(restaurant: $restaurants[index])
+                ForEach(vm.restaurants.indices, id: \.self){ index in
+                    NavigationLink(destination: RestaurantDetailView(restaurant: $vm.restaurants[index])){
+                        RestaurantView(restaurant: $vm.restaurants[index])
                         
                     }
                         .navigationLinkIndicatorVisibility(.hidden)
@@ -42,18 +36,17 @@ struct ContentView: View {
                             }
                         }
                 }
-                .onDelete { IndexSet in
-                    restaurants.remove(atOffsets: IndexSet)
+                .onDelete{ IndexSet in
+                    vm.removeRestaurant(IndexSet)
                 }
             }
             .listStyle(.plain)
             .navigationTitle("Restaurants")
-//            .navigationBarTitleDisplayMode(.automatic)
             
         }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(vm:RestaurantListVewModel())
 }

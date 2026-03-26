@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct RestaurantDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var restaurant: Restaurant
+    @State var isSheetShowing: Bool = false
     
     var body: some View {
         GeometryReader{ geometry in
@@ -66,6 +68,15 @@ struct RestaurantDetailView: View {
                     
                 }
                     .padding()
+                Button{
+                    isSheetShowing = true
+                }label:{
+                    Label("Go to website", systemImage: "safari")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .padding()
+                
                 
             }
             
@@ -99,6 +110,27 @@ struct RestaurantDetailView: View {
                 }
             }
         }
+        .sheet(isPresented: $isSheetShowing) {
+            if let siteURL = URL(string: restaurant.url){
+                WebView(URL: siteURL)
+            }else{
+                Text("Website not found")
+            }
+        }
+        
+    }
+}
+
+struct WebView: UIViewRepresentable{
+    let URL: URL
+    
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let request = URLRequest(url: URL)
+        uiView.load(request)
     }
 }
 
